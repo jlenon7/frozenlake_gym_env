@@ -11,7 +11,7 @@
 
 ### Epoch reward tracker
 
-<img src="storage/epoch-reward-tracker.png" width="500px" alt="Epoch reward tracker" />
+<img src="storage/plots/epoch-reward-tracker.png" width="500px" alt="Epoch reward tracker" />
 
 ## TODOs
 
