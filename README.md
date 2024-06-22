@@ -7,8 +7,11 @@
 <img src="resources/result.gif" width="500px" alt="Result" />
 
 > [!TIP]
-> To train the model faster, swap the usage of `env` by `rgb_env` 
-> in `bin/agent.py` file.
+> To train the model faster, comment the `env.render(mode='human')` call in `bin/agent.py` or change the `render_interval` variable as desired.
+
+### Epoch reward tracker
+
+<img src="storage/epoch-reward-tracker.png" width="500px" alt="Epoch reward tracker" />
 
 ## TODOs
 
@@ -51,10 +54,3 @@ To run the agent to complete the game task run:
 ```shell
 make agent
 ```
-
-> [!WARNING]
-> Keep in mind that the agent is not using rewards to perform the actions.
-> Instead is just observing the environment to use the car position and 
-> velocity to use gravity to accomplish the task of climbing the hill. With
-> this approach, we are not completing the secondary task of the problem
-> that is landing exactly at the flag.

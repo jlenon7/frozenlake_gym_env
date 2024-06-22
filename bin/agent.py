@@ -7,22 +7,26 @@ from src.constants import EPOCHS, EPSILON, Q_TABLE
 
 rewards = []
 log_interval = 100
+render_interval = 1000
 
 epoch_plot_tracker = []
 total_reward_plot_tracker = []
 
-for episode in range(EPOCHS):
-    state = env.reset()[0]
+for epoch in range(EPOCHS):
+    state = env.reset()
     terminated = False
     total_rewards = 0
 
     # Agents play game
     while not terminated:
+        if epoch % render_interval == 0:
+          env.render(mode='human')
+
         # ACTION
         action = eps.action_selection(EPSILON, state)
 
         # Next steps
-        new_state, reward, terminated, truncated, info = env.step(action)
+        new_state, reward, terminated, info = env.step(action)
 
         # Old (Current) Q Value. Q(st, at)
         old_q_value = Q_TABLE[state, action]
@@ -41,15 +45,15 @@ for episode in range(EPOCHS):
         state = new_state
 
     # Agent finished a round of the game
-    episode += 1
-    EPSILON = eps.reduce_epsilon(episode)
+    epoch += 1
+    EPSILON = eps.reduce_epsilon(epoch)
     rewards.append(total_rewards)
 
-    epoch_plot_tracker.append(episode)
+    epoch_plot_tracker.append(epoch)
     total_reward_plot_tracker.append(np.sum(rewards))
 
-    if episode % log_interval == 0:
-        print(f'Episode: {episode}, Rewards: {np.sum(rewards)}')
+    if epoch % log_interval == 0:
+        print(f'Epoch: {epoch}, Rewards: {np.sum(rewards)}')
 
 env.close()
 plt.figure(figsize=(8, 8))

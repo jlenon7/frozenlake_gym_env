@@ -9,7 +9,7 @@ gym.register(
     reward_threshold=.8196
 )
 
-env = gym.make(ENV_NAME,  render_mode='human')
+env = gym.make(ENV_NAME)
 rgb_env = gym.make(ENV_NAME, render_mode='rgb_array')
 
 action_size = env.action_space.n

@@ -11,7 +11,7 @@ contourpy = "*"
 scikit-learn = "*"
 scipy = "*"
 pygame = "*"
-gym = {extras = ["atari", "accept-rom-license"] }
+gym = "==0.25.0"
 numpy = "==1.24.0"
 
 [dev-packages]
